@@ -1,12 +1,15 @@
 package jpabook.jpashop.domain;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.aspectj.weaver.ast.Or;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static javax.persistence.FetchType.*;
@@ -15,6 +18,7 @@ import static javax.persistence.FetchType.*;
 @Table(name = "orders")
 @Getter
 @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order {
 
     @Id
@@ -60,9 +64,7 @@ public class Order {
         Order order = new Order();
         order.setMember(member);
         order.setDelivery(delivery);
-        for (OrderItem orderItem : orderItems) {
-            order.addOrderItem(orderItem);
-        }
+        Arrays.stream(orderItems).forEach(order::addOrderItem);
         order.setStatus(OrderStatus.ORDER);
         order.setOrdrderDate(LocalDateTime.now());
         return order;
@@ -78,9 +80,7 @@ public class Order {
         }
 
         this.setStatus(OrderStatus.CANCEL);
-        for (OrderItem orderItem : orderItems) {
-            orderItem.cancel();
-        }
+        orderItems.forEach(OrderItem::cancel);
     }
 
     //--조회 로직--//
