@@ -47,7 +47,7 @@ test {
     useJUnitPlatform()
 }
 
-def querydslDir = 'src/main/generated'
+def querydslDir = 'src/main/java'
 
 querydsl {
     library = "com.querydsl:querydsl-apt"
