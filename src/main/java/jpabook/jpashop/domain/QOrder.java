@@ -28,9 +28,9 @@ public class QOrder extends EntityPathBase<Order> {
 
     public final QMember member;
 
-    public final ListPath<OrderItem, QOrderItem> orderItems = this.<OrderItem, QOrderItem>createList("orderItems", OrderItem.class, QOrderItem.class, PathInits.DIRECT2);
+    public final DateTimePath<java.time.LocalDateTime> orderDate = createDateTime("orderDate", java.time.LocalDateTime.class);
 
-    public final DateTimePath<java.time.LocalDateTime> ordrderDate = createDateTime("ordrderDate", java.time.LocalDateTime.class);
+    public final ListPath<OrderItem, QOrderItem> orderItems = this.<OrderItem, QOrderItem>createList("orderItems", OrderItem.class, QOrderItem.class, PathInits.DIRECT2);
 
     public final EnumPath<OrderStatus> status = createEnum("status", OrderStatus.class);
 

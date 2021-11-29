@@ -39,7 +39,7 @@ public class OrderItem {
         orderItem.setOrderPrice(orderPrice);
         orderItem.setCount(count);
 
-        item.removeStock(count);
+        item.removeStock(count); //주문 개수만큼 재고 감소
         return orderItem;
     }
 
