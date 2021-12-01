@@ -6,6 +6,7 @@ import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderStatus;
 import jpabook.jpashop.domain.QMember;
 import jpabook.jpashop.domain.QOrder;
+import jpabook.jpashop.repository.simplequery.OrderSimpleQueryDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
@@ -90,5 +91,10 @@ public class OrderRepository {
     }
 
 
+    public List<Order> findAllWithMemberDelivery() {
+        return em.createQuery(
+                "select o from Order o" + " join fetch o.member m" + " join fetch o.delivery d", Order.class
+        ).getResultList();
+    } //fetch join 을 통해서 연관 관계에 있는 값을 모두 가져오도록 함
 
 }
