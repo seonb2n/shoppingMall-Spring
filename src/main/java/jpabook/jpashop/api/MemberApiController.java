@@ -63,7 +63,8 @@ public class MemberApiController {
         member.setName(request.getName());
         member.setAddress(new Address(request.getAddress(), null, null));
         Long id = memberService.join(member);
-        return new CreateMemberResponse(id);
+        return new CreateMemberResponse(id
+        );
     }
 
     @PutMapping("/api/v2/memberUpdate/{id}")
