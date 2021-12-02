@@ -36,7 +36,7 @@ public class OrderRepository {
      * @param orderSearch
      * @return
      */
-    public List<Order> findAll(OrderSearch orderSearch) {
+    public List<Order> findAllWithQuerydsl(OrderSearch orderSearch) {
         JPAQueryFactory query = new JPAQueryFactory(em);
         QOrder order = QOrder.order;
         QMember member = QMember.member;

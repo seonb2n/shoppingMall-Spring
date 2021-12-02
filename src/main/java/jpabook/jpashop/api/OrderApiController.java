@@ -82,7 +82,7 @@ public class OrderApiController {
     @GetMapping("/api/v6/orders")
     public Result ordersV6() {
         List<OrderFlatDto> list = orderQueryRepository.findAllByDto_flat();
-        
+
         return new Result(list);
     }
 
